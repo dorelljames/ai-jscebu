@@ -6,14 +6,17 @@ const features = [
     title: "AI Foundations",
     description:
       "Master core AI concepts, LLMs, and practical developer use cases",
+    icon: "🧠",
   },
   {
     title: "Hands-on Learning",
     description: "Build real AI applications using JavaScript and modern tools",
+    icon: "💻",
   },
   {
     title: "Expert Guidance",
     description: "Learn industry best practices and future-proof methodologies",
+    icon: "🎯",
   },
 ];
 
@@ -23,39 +26,81 @@ const sessions = [
     title: "AI Foundations",
     description:
       "Build foundational knowledge about AI concepts and integrate them into your workflow",
+    topics: [
+      "AI & LLM basics",
+      "Practical use cases",
+      "JavaScript for AI",
+      "Hands-on API practice",
+    ],
   },
   {
     number: "02",
     title: "Prompt Engineering",
     description:
       "Master the art of crafting effective prompts for different scenarios",
+    topics: [
+      "Prompt anatomy",
+      "Advanced techniques",
+      "Chain-of-thought",
+      "Real-world examples",
+    ],
   },
   {
     number: "03",
     title: "AI-Powered Tools",
     description: "Create practical AI tools using LLMs and APIs",
+    topics: [
+      "Application architecture",
+      "API integration",
+      "Error handling",
+      "Building a chatbot",
+    ],
   },
   {
     number: "04",
     title: "RAG Systems",
     description:
       "Learn Retrieval-Augmented Generation for knowledge-based AI apps",
+    topics: [
+      "Vector databases",
+      "Embeddings",
+      "Similarity search",
+      "Knowledge bases",
+    ],
   },
   {
     number: "05",
     title: "AI Agents",
     description: "Build autonomous AI agents with reasoning capabilities",
+    topics: [
+      "Agent architecture",
+      "LangChain",
+      "Tool integration",
+      "Autonomous systems",
+    ],
   },
   {
     number: "06",
     title: "Architecture",
     description:
       "Design scalable AI systems and integrate them with existing apps",
+    topics: [
+      "System design",
+      "Integration patterns",
+      "Ethics & privacy",
+      "Best practices",
+    ],
   },
   {
     number: "07",
     title: "Deployment",
     description: "Deploy, monitor, and optimize your AI applications",
+    topics: [
+      "Cloud deployment",
+      "Performance",
+      "Monitoring",
+      "Cost optimization",
+    ],
   },
 ];
 
@@ -63,66 +108,103 @@ const benefits = [
   {
     title: "Practical Skills",
     description: "Build real-world AI applications from day one",
+    icon: "🛠️",
   },
   {
     title: "Career Growth",
     description: "Position yourself at the forefront of AI development",
+    icon: "📈",
   },
   {
     title: "Expert Support",
     description: "Get guidance from experienced AI practitioners",
+    icon: "👥",
   },
   {
     title: "Community",
     description: "Join a network of AI-focused developers",
+    icon: "🌟",
   },
 ];
 ---
 
 <Layout>
   <!-- Hero Section -->
-  <header class="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-yellow-400 font-bold text-xl">AI JSCebu</div>
-      <div class="space-x-6">
-        <a href="#features" class="hover:text-yellow-400">Features</a>
-        <a href="#curriculum" class="hover:text-yellow-400">Curriculum</a>
-        <a href="#benefits" class="hover:text-yellow-400">Benefits</a>
-        <a
-          href="#register"
-          class="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-300"
-          >Register Now</a
-        >
-      </div>
-    </nav>
-
-    <div class="container mx-auto px-6 py-24 text-center">
-      <h1 class="text-5xl font-bold mb-6">
-        Building AI-Powered Applications
-        <span class="text-yellow-400">From Zero to AI Agent Mastery</span>
-      </h1>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">
-        Master the art of building intelligent applications with JavaScript.
-        Learn practical AI development from fundamentals to advanced agent
-        systems.
-      </p>
-      <a
-        href="#register"
-        class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 inline-block"
+  <header
+    class="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden"
+  >
+    <div
+      class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+    >
+    </div>
+    <div class="relative">
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
-        Join the Workshop
-      </a>
+        <div class="text-yellow-400 font-bold text-xl flex items-center gap-3">
+          <span class="text-white">AI for Devs Workshop</span> by <img
+            src="/jslogo.avif"
+            alt="JavaScript Logo"
+            class="h-8"
+          />
+        </div>
+        <div class="space-x-6">
+          <a href="#features" class="hover:text-yellow-400">Features</a>
+          <a href="#curriculum" class="hover:text-yellow-400">Curriculum</a>
+          <a href="#benefits" class="hover:text-yellow-400">Benefits</a>
+          <a
+            href="#register"
+            class="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors"
+            >Register Now</a
+          >
+        </div>
+      </nav>
+
+      <div class="container mx-auto px-6 py-24 text-center">
+        <div class="animate-fade-in">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Building AI-Powered Applications
+            <span
+              class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 mt-2"
+            >
+              From Zero to AI Agent Mastery
+            </span>
+          </h1>
+          <p class="text-xl mb-12 max-w-2xl mx-auto text-gray-300">
+            Transform your development skills with our comprehensive workshop.
+            Learn to build, deploy, and scale AI applications using JavaScript
+            and modern tools.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <a
+              href="#register"
+              class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition-colors inline-flex items-center gap-2"
+            >
+              Join the Workshop <span class="text-xl">→</span>
+            </a>
+            <a
+              href="#curriculum"
+              class="text-white border border-gray-600 px-8 py-4 rounded-lg text-lg hover:border-yellow-400 transition-colors"
+            >
+              View Curriculum
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Features Section -->
   <section id="features" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-16">Key Features</h2>
+      <h2 class="text-4xl font-bold text-center mb-16">Workshop Highlights</h2>
       <div class="grid md:grid-cols-3 gap-12">
         {
           features.map((feature) => (
-            <div class="bg-white p-8 rounded-lg shadow-lg">
+            <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+              <div class="text-4xl mb-4">{feature.icon}</div>
               <h3 class="text-xl font-semibold mb-4">{feature.title}</h3>
               <p class="text-gray-600">{feature.description}</p>
             </div>
@@ -139,14 +221,22 @@ const benefits = [
       <div class="grid md:grid-cols-2 gap-8">
         {
           sessions.map((session) => (
-            <div class="border border-gray-200 p-6 rounded-lg hover:border-yellow-400 transition-colors">
-              <div class="flex items-start">
-                <span class="text-yellow-400 text-4xl font-bold mr-4">
+            <div class="border border-gray-200 p-6 rounded-lg hover:border-yellow-400 transition-colors bg-white">
+              <div class="flex items-start gap-4">
+                <span class="text-yellow-400 text-4xl font-bold">
                   {session.number}
                 </span>
-                <div>
+                <div class="flex-1">
                   <h3 class="text-xl font-semibold mb-2">{session.title}</h3>
-                  <p class="text-gray-600">{session.description}</p>
+                  <p class="text-gray-600 mb-4">{session.description}</p>
+                  <div class="grid grid-cols-2 gap-2">
+                    {session.topics.map((topic) => (
+                      <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
+                        <span class="text-sm text-gray-600">{topic}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -157,15 +247,23 @@ const benefits = [
   </section>
 
   <!-- Benefits Section -->
-  <section id="benefits" class="py-20 bg-gray-900 text-white">
-    <div class="container mx-auto px-6">
+  <section
+    id="benefits"
+    class="py-20 bg-gray-900 text-white relative overflow-hidden"
+  >
+    <div
+      class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+    >
+    </div>
+    <div class="container mx-auto px-6 relative">
       <h2 class="text-4xl font-bold text-center mb-16">
         Why Join This Workshop?
       </h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {
           benefits.map((benefit) => (
-            <div class="text-center">
+            <div class="text-center p-6 rounded-lg bg-gray-800 bg-opacity-50 backdrop-blur-sm">
+              <div class="text-4xl mb-4">{benefit.icon}</div>
               <h3 class="text-xl font-semibold text-yellow-400 mb-4">
                 {benefit.title}
               </h3>
@@ -177,30 +275,44 @@ const benefits = [
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Email Capture Section -->
   <section id="register" class="py-20 bg-yellow-400">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-gray-900 mb-8">
-        Ready to Master AI Development?
-      </h2>
-      <p class="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
-        Join us for an intensive workshop that will transform you into a
-        confident AI developer.
-      </p>
-      <a
-        href="#"
-        class="bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 inline-block"
-      >
-        Register Now
-      </a>
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold text-gray-900 mb-8">
+          Ready to Master AI Development?
+        </h2>
+        <p class="text-xl text-gray-800 mb-8">
+          Join us for an intensive workshop that will transform you into a
+          confident AI developer. Sign up your interest today!
+        </p>
+        <form class="max-w-md mx-auto flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-3 rounded-lg border-2 border-gray-800 focus:outline-none focus:border-gray-900"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-gray-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors w-full"
+          >
+            Support
+          </button>
+        </form>
+        <p class="mt-4 text-sm text-gray-700">
+          By registering, you'll also get exclusive access to our JS Cebu
+          community.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-400 py-12">
     <div class="container mx-auto px-6">
-      <div class="flex justify-between items-center">
-        <div class="text-sm">© 2024 AI JSCebu. All rights reserved.</div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-sm">© 2024 JavaScript Cebu. All rights reserved.</div>
         <div class="flex space-x-6">
           <a href="#" class="hover:text-yellow-400">Terms</a>
           <a href="#" class="hover:text-yellow-400">Privacy</a>
@@ -210,3 +322,20 @@ const benefits = [
     </div>
   </footer>
 </Layout>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
