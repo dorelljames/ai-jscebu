@@ -1,5 +1,8 @@
 ---
+export const prerender = false;
 
+// Set response headers for image
+Astro.response.headers.set("Content-Type", "image/png");
 ---
 
 <div class="og-container">
