@@ -1,0 +1,21 @@
+{
+  "name": "AI-Powered Applications Workshop | JavaScript Cebu",
+  "short_name": "AI JSCebu",
+  "description": "Master the art of building intelligent applications with JavaScript. Learn practical AI development from fundamentals to advanced agent systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffd700",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

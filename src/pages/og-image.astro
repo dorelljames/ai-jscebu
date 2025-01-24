@@ -1,0 +1,104 @@
+---
+
+---
+
+<div class="og-container">
+  <div class="content">
+    <div class="logo">
+      <img
+        src="/jslogo.avif"
+        alt="JavaScript Cebu Logo"
+        width="80"
+        height="80"
+      />
+    </div>
+    <h1>AI-Powered Applications Workshop</h1>
+    <p>From Zero to AI Agent Mastery</p>
+    <div class="features">
+      <span>AI Foundations</span>
+      <span>•</span>
+      <span>LLM Integration</span>
+      <span>•</span>
+      <span>RAG Systems</span>
+      <span>•</span>
+      <span>AI Agents</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Container for OG Image (1200x630) */
+  .og-container {
+    width: 1200px;
+    height: 630px;
+    background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background Grid Pattern */
+  .og-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/grid.svg");
+    background-position: center;
+    opacity: 0.2;
+    mask-image: linear-gradient(to bottom, white, transparent);
+  }
+
+  .content {
+    text-align: center;
+    z-index: 1;
+    padding: 2rem;
+  }
+
+  .logo {
+    margin-bottom: 2rem;
+  }
+
+  .logo img {
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 72px;
+    font-weight: 800;
+    background: linear-gradient(to right, #ffd700, #ffed4a);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 36px;
+    color: #a3a3a3;
+    margin-bottom: 2rem;
+  }
+
+  .features {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #ffd700;
+  }
+
+  .features span {
+    opacity: 0.8;
+  }
+</style>

@@ -2,12 +2,56 @@
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
 const {
   title = "AI-Powered Applications Workshop | AI JSCebu",
   description = "Master the art of building intelligent applications with JavaScript. Learn practical AI development from fundamentals to advanced agent systems.",
+  image = "/og-image.png", // Make sure to create this image
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: title,
+  description: description,
+  provider: {
+    "@type": "Organization",
+    name: "JavaScript Cebu",
+    url: "https://jscebu.org",
+    logo: new URL("/jslogo.avif", Astro.site).href,
+    sameAs: [
+      "https://www.facebook.com/javascriptcebu",
+      // Add other social links
+    ],
+  },
+  courseCode: "AI-DEV-01",
+  educationalLevel: "Advanced",
+  learningResourceType: "Workshop",
+  audience: {
+    "@type": "Audience",
+    audienceType: "JavaScript Developers",
+  },
+  teaches: [
+    "AI Foundations",
+    "LLM Integration",
+    "Prompt Engineering",
+    "RAG Systems",
+    "AI Agents",
+    "System Architecture",
+  ],
+  // Add more course details
+  inLanguage: "en",
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/PreOrder",
+    price: "0",
+    priceCurrency: "PHP",
+  },
+};
 ---
 
 <!doctype html>
@@ -17,27 +61,52 @@ const {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="author" content="JavaScript Cebu" />
+    <meta name="application-name" content="AI JSCebu" />
+    <meta
+      name="keywords"
+      content="AI workshop, JavaScript AI, LLM development, AI agents, prompt engineering, RAG systems, JavaScript Cebu, artificial intelligence, web development, Cebu developers, tech community"
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:site_name" content="JavaScript Cebu" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:creator" content="@javascriptcebu" />
+    <!-- Add your Twitter handle -->
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Additional Meta -->
+    <meta name="theme-color" content="#ffd700" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   </head>
   <body class="font-sans antialiased">
     <slot />
