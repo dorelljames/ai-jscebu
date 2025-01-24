@@ -3,24 +3,29 @@
 ---
 
 <div class="og-container">
+  <div
+    class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
+  >
+  </div>
   <div class="content">
     <div class="logo">
       <img
         src="/jslogo.avif"
         alt="JavaScript Cebu Logo"
-        width="80"
-        height="80"
+        width="120"
+        height="120"
+        class="mx-auto"
       />
     </div>
     <h1>AI-Powered Applications Workshop</h1>
     <p>From Zero to AI Agent Mastery</p>
     <div class="features">
       <span>AI Foundations</span>
-      <span>•</span>
+      <span>&middot;</span>
       <span>LLM Integration</span>
-      <span>•</span>
+      <span>&middot;</span>
       <span>RAG Systems</span>
-      <span>•</span>
+      <span>&middot;</span>
       <span>AI Agents</span>
     </div>
   </div>
@@ -48,8 +53,8 @@
     overflow: hidden;
   }
 
-  /* Background Grid Pattern */
-  .og-container::before {
+  /* Remove the old background grid pattern */
+  /* .og-container::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -57,7 +62,7 @@
     background-position: center;
     opacity: 0.2;
     mask-image: linear-gradient(to bottom, white, transparent);
-  }
+  } */
 
   .content {
     text-align: center;
@@ -66,10 +71,12 @@
   }
 
   .logo {
+    text-align: center;
     margin-bottom: 2rem;
   }
 
   .logo img {
+    margin: 0 auto;
     border-radius: 12px;
   }
 
