@@ -138,45 +138,67 @@ const benefits = [
     >
     </div>
     <div class="relative">
-      <nav
-        class="container mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <div class="text-yellow-400 font-bold text-xl flex items-center gap-3">
-          <span class="text-white">AI for Devs Workshop</span> by <div
-            class="flex items-center"
-          >
-            <img
-              src="/jslogo.avif"
-              alt="JavaScript Logo"
-              class="h-8 w-auto object-contain"
-            />
+      <nav class="container mx-auto px-6 py-4">
+        <div
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <div class="flex items-center justify-center md:justify-start">
+            <div
+              class="text-yellow-400 font-bold text-lg md:text-xl flex items-center gap-3"
+            >
+              <span class="text-white whitespace-nowrap"
+                >AI for Devs Workshop</span
+              >
+              <span class="whitespace-nowrap">by</span>
+              <div class="flex items-center">
+                <img
+                  src="/jslogo.avif"
+                  alt="JavaScript Logo"
+                  class="h-6 md:h-8 w-auto object-contain"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="space-x-6">
-          <a href="#features" class="hover:text-yellow-400">Features</a>
-          <a href="#curriculum" class="hover:text-yellow-400">Curriculum</a>
-          <a href="#benefits" class="hover:text-yellow-400">Benefits</a>
-          <a
-            href="#register"
-            class="bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors"
-            >Register Now</a
+          <div
+            class="flex flex-wrap items-center justify-center md:justify-end gap-6"
           >
+            <a
+              href="#features"
+              class="hover:text-yellow-400 text-sm md:text-base">Features</a
+            >
+            <a
+              href="#curriculum"
+              class="hover:text-yellow-400 text-sm md:text-base">Curriculum</a
+            >
+            <a
+              href="#benefits"
+              class="hover:text-yellow-400 text-sm md:text-base">Benefits</a
+            >
+            <a
+              href="#register"
+              class="bg-yellow-400 text-gray-900 px-4 py-1.5 md:px-4 md:py-2 rounded-lg hover:bg-yellow-300 transition-colors text-sm md:text-base"
+            >
+              Register Now
+            </a>
+          </div>
         </div>
       </nav>
 
-      <div class="flex justify-center -mb-8 mt-8">
+      <div class="flex justify-center mt-6 md:mt-8">
         <div class="inline-block animate-fade-in">
           <p
-            class="text-sm bg-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5 text-yellow-300 font-medium"
+            class="text-xs md:text-sm bg-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5 md:px-4 md:py-1.5 text-yellow-300 font-medium whitespace-nowrap"
           >
             🎯 Coming in Q2 2025 - Limited seats available!
           </p>
         </div>
       </div>
 
-      <div class="container mx-auto px-6 py-24 text-center">
+      <div class="container mx-auto px-6 py-16 md:py-24 text-center">
         <div class="animate-fade-in">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+          >
             Building AI-Powered Applications
             <span
               class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 mt-2"
@@ -184,7 +206,9 @@ const benefits = [
               From Zero to AI Agent Mastery
             </span>
           </h1>
-          <p class="text-xl mb-12 max-w-2xl mx-auto text-gray-300">
+          <p
+            class="text-lg md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto text-gray-300"
+          >
             Transform your development skills with our comprehensive workshop.
             Learn to build, deploy, and scale AI applications using JavaScript
             and modern tools.
@@ -194,13 +218,13 @@ const benefits = [
           >
             <a
               href="#register"
-              class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition-colors inline-flex items-center gap-2"
+              class="w-full sm:w-auto bg-yellow-400 text-gray-900 px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-yellow-300 transition-colors inline-flex items-center justify-center gap-2"
             >
               Join the Workshop <span class="text-xl">→</span>
             </a>
             <a
               href="#curriculum"
-              class="text-white border border-gray-600 px-8 py-4 rounded-lg text-lg hover:border-yellow-400 transition-colors"
+              class="w-full sm:w-auto text-white border border-gray-600 px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg hover:border-yellow-400 transition-colors text-center"
             >
               View Curriculum
             </a>
