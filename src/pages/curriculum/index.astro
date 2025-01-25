@@ -4,14 +4,35 @@ import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../components/Navigation.astro";
 
 const curriculumEntries = await getCollection("curriculum");
-const sortedEntries = curriculumEntries.sort(
-  (a, b) => a.data.order - b.data.order
-);
+
+// Separate main modules and sub-pages
+const mainModules = curriculumEntries
+  .filter((entry) => !entry.data.parentModule)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Create a map of sub-pages by parent module
+const subPagesByModule = curriculumEntries
+  .filter((entry) => entry.data.parentModule)
+  .reduce((acc, entry) => {
+    const parentModule = entry.data.parentModule;
+    if (!acc[parentModule]) {
+      acc[parentModule] = [];
+    }
+    acc[parentModule].push(entry);
+    return acc;
+  }, {});
+
+// Sort sub-pages by order
+Object.values(subPagesByModule).forEach((subPages) => {
+  subPages.sort((a, b) => a.data.order - b.data.order);
+});
 ---
 
 <Layout title="Workshop Curriculum | JS Cebu">
   <div class="min-h-screen bg-white dark:bg-gray-900">
-    <Navigation />
+    <div class="w-full bg-gray-900">
+      <Navigation />
+    </div>
 
     <main class="max-w-6xl mx-auto px-4 py-8">
       <div class="text-center mb-12">
@@ -25,58 +46,95 @@ const sortedEntries = curriculumEntries.sort(
 
       <div class="grid gap-8">
         {
-          sortedEntries.map((entry) => (
-            <a
-              href={`/curriculum/${entry.slug}`}
-              class="group block p-6 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-xl transition-all"
-            >
-              <article>
-                <div class="flex flex-col md:flex-row gap-6">
-                  <div class="flex-none">
-                    <span class="text-4xl font-bold text-yellow-400">
-                      {String(entry.data.order).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div class="flex-grow">
-                    <h2 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
-                      {entry.data.title}
-                    </h2>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                      {entry.data.duration && (
-                        <span class="text-sm text-gray-500 dark:text-gray-400">
-                          {entry.data.duration}
-                        </span>
-                      )}
-                      {entry.data.level && (
-                        <>
-                          <span class="text-gray-400 dark:text-gray-500">
-                            •
-                          </span>
-                          <span class="text-sm text-gray-500 dark:text-gray-400 capitalize">
-                            {entry.data.level}
-                          </span>
-                        </>
-                      )}
+          mainModules.map((module) => (
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
+              <a
+                href={`/curriculum/${module.slug}`}
+                class="group block p-6 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+              >
+                <article>
+                  <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-none">
+                      <span class="text-4xl font-bold text-yellow-400">
+                        {String(module.data.order).padStart(2, "0")}
+                      </span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
-                      {entry.data.description}
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                      {entry.data.topics.map((topic) => (
-                        <span class="px-3 py-1 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm border border-gray-200 dark:border-gray-600">
-                          {topic}
-                        </span>
-                      ))}
+                    <div class="flex-grow">
+                      <h2 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
+                        {module.data.title}
+                      </h2>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                        {module.data.duration && (
+                          <span class="text-sm text-gray-500 dark:text-gray-400">
+                            {module.data.duration}
+                          </span>
+                        )}
+                        {module.data.level && (
+                          <>
+                            <span class="text-gray-400 dark:text-gray-500">
+                              •
+                            </span>
+                            <span class="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                              {module.data.level}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                      <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        {module.data.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {module.data.topics.map((topic) => (
+                          <span class="px-3 py-1 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm border border-gray-200 dark:border-gray-600">
+                            {topic}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div class="flex-none self-center">
+                      <span class="text-2xl text-gray-400 group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
+                        →
+                      </span>
                     </div>
                   </div>
-                  <div class="flex-none self-center">
-                    <span class="text-2xl text-gray-400 group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
-                      →
-                    </span>
+                </article>
+              </a>
+
+              {/* Sub-pages */}
+              {subPagesByModule[module.data.title] && (
+                <div class="border-t border-gray-200 dark:border-gray-700">
+                  <div class="grid divide-y divide-gray-200 dark:divide-gray-700">
+                    {subPagesByModule[module.data.title].map((subPage) => (
+                      <a
+                        href={`/curriculum/${subPage.slug}`}
+                        class="group block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+                      >
+                        <div class="flex items-center gap-4">
+                          <div class="flex-none w-8 text-center">
+                            <span class="text-lg font-semibold text-yellow-400">
+                              {String(subPage.data.order)}
+                            </span>
+                          </div>
+                          <div class="flex-grow">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
+                              {subPage.data.title}
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                              {subPage.data.description}
+                            </p>
+                          </div>
+                          <div class="flex-none">
+                            <span class="text-xl text-gray-400 group-hover:text-yellow-500 dark:group-hover:text-yellow-400 transition-colors">
+                              →
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
-              </article>
-            </a>
+              )}
+            </div>
           ))
         }
       </div>
