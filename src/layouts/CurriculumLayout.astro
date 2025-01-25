@@ -1,55 +1,108 @@
 ---
 import Layout from "./Layout.astro";
-import Navigation from "../components/Navigation.astro";
+import CurriculumSidebar from "../components/CurriculumSidebar.astro";
+import CurriculumHeader from "../components/CurriculumHeader.astro";
+import CurriculumFooter from "../components/CurriculumFooter.astro";
 
-interface Props {
-  title: string;
-  headings: { depth: number; slug: string; text: string }[];
-  curriculumTitle: string;
-}
+const { frontmatter } = Astro.props;
+const currentPath = Astro.url.pathname;
 
-const { title, headings, curriculumTitle } = Astro.props;
+const isSubpage = frontmatter.parentModule !== undefined;
 ---
 
-<Layout title={title}>
-  <div class="min-h-screen bg-white dark:bg-gray-900">
-    <Navigation />
+<Layout title={frontmatter.title}>
+  <div class="min-h-screen flex flex-col">
+    <CurriculumHeader frontmatter={frontmatter} />
 
-    <div class="flex">
-      <!-- Left sidebar with table of contents -->
-      <aside
-        class="w-64 flex-shrink-0 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto border-r border-gray-200 dark:border-gray-700"
-      >
-        <nav class="p-4">
-          <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
-            {curriculumTitle}
-          </h2>
-          <ul class="space-y-2">
+    <div class="flex-1 flex container mx-auto">
+      <CurriculumSidebar currentPath={currentPath} />
+
+      <main class="flex-1 p-8">
+        <article class="prose dark:prose-invert max-w-none">
+          <header class="mb-8">
             {
-              headings.map((heading) => (
-                <li class={`pl-${(heading.depth - 1) * 4}`}>
-                  <a
-                    href={`#${heading.slug}`}
-                    class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400 text-sm block py-1"
-                  >
-                    {heading.text}
-                  </a>
-                </li>
-              ))
+              isSubpage ? (
+                <div class="mb-4">
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                    {frontmatter.parentModule}
+                  </div>
+                  <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
+                    {frontmatter.title}
+                  </h1>
+                </div>
+              ) : (
+                <div class="flex items-start gap-6 mb-4">
+                  <span class="text-5xl font-bold text-yellow-400">
+                    {String(frontmatter.order).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                      {frontmatter.title}
+                    </h1>
+                    <p class="text-xl text-gray-600 dark:text-gray-400">
+                      {frontmatter.description}
+                    </p>
+                  </div>
+                </div>
+              )
             }
-          </ul>
-        </nav>
-      </aside>
 
-      <!-- Main content -->
-      <main class="flex-1 max-w-4xl mx-auto px-4 py-8">
-        <article
-          class="prose prose-lg dark:prose-invert prose-yellow max-w-none"
-        >
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {
+                frontmatter.duration && (
+                  <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                      Duration
+                    </div>
+                    <div class="font-medium text-gray-900 dark:text-white">
+                      {frontmatter.duration}
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                frontmatter.level && (
+                  <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                      Level
+                    </div>
+                    <div class="font-medium capitalize text-gray-900 dark:text-white">
+                      {frontmatter.level}
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                frontmatter.author && (
+                  <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                      Instructor
+                    </div>
+                    <div class="flex items-center gap-2">
+                      {frontmatter.author.avatar && (
+                        <img
+                          src={frontmatter.author.avatar}
+                          alt={frontmatter.author.name}
+                          class="w-6 h-6 rounded-full"
+                        />
+                      )}
+                      <span class="font-medium text-gray-900 dark:text-white">
+                        {frontmatter.author.name}
+                      </span>
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </header>
+
           <slot />
         </article>
       </main>
     </div>
+
+    <CurriculumFooter />
   </div>
 </Layout>
-

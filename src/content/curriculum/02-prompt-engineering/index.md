@@ -17,37 +17,39 @@ topics:
 duration: "4 hours"
 level: "intermediate"
 prerequisites: ["AI Foundations module", "Basic understanding of LLMs"]
-sections:
-  - id: "prompt-anatomy"
-    title: "Prompt Anatomy"
-    content: |
-      # Understanding Prompt Components
+# Prompt Engineering
 
-      A well-structured prompt is essential for getting the best results from AI models. Let's break down the key components:
+Welcome to the Prompt Engineering module! This comprehensive module will teach you how to craft effective prompts for various AI scenarios.
 
-      ## Role and Context Setting
-      - Define who the AI should act as
-      - Provide relevant background information
-      - Set the scope of the interaction
+## What You'll Learn
 
-      ## Task Specification
-      - Clear and specific instructions
-      - Expected outcomes
-      - Step-by-step breakdown when needed
+In this module, you'll learn about:
 
-      ## Output Formatting
-      - Desired format (JSON, markdown, etc.)
-      - Structure requirements
-      - Examples of expected output
+- Understanding prompt components and structure
+- Advanced prompt engineering techniques
+- Chain-of-thought prompting
+- Real-world prompt examples and best practices
 
-      ## Constraints and Guidelines
-      - Limitations and boundaries
-      - Quality criteria
-      - Error handling preferences
+## Module Structure
 
-  - id: "chain-of-thought"
-    title: "Chain-of-thought"
-    content: |
+1. **Prompt Anatomy**: Learn the essential components of effective prompts
+2. **Advanced Techniques**: Master advanced prompt engineering methods
+3. **Chain-of-thought**: Understand how to create prompts that guide AI reasoning
+4. **Real-world Examples**: Apply your knowledge to practical scenarios
+
+Each section builds upon the previous one, helping you become proficient in prompt engineering.
+
+## Prerequisites
+
+Before starting this module, you should have:
+
+- Completed the AI Foundations module
+- Basic understanding of LLMs
+- Practical experience with AI interactions
+
+## Getting Started
+
+Select a section from the sidebar to begin your journey into prompt engineering. We recommend following the sections in order, as each builds upon the concepts introduced in the previous ones.
       # Chain-of-thought Prompting
 
       Chain-of-thought prompting is a powerful technique that helps AI models break down complex problems into manageable steps.

@@ -26,28 +26,38 @@ prerequisites:
 
 # AI-Powered Tools
 
-Learn to build practical AI-powered applications that solve real-world problems. This module focuses on creating robust, production-ready AI tools.
+Welcome to the AI-Powered Tools module! This comprehensive module will teach you how to build practical AI applications using modern tools and best practices.
 
-## Module Overview
+## What You'll Learn
 
-### 1. Application Architecture
+In this module, you'll learn about:
 
-- Designing AI-powered applications
-- Component structure
-- State management
-- User interaction patterns
-- Performance optimization
+- Designing robust AI-powered applications
+- Implementing effective error handling strategies
+- Integrating with AI APIs efficiently
+- Building practical AI tools like chatbots
 
-### 2. Error Handling
+## Module Structure
 
-- AI model errors
-- Rate limiting
-- Fallback strategies
-- Retry mechanisms
-- Error messaging
-- Graceful degradation
+1. **Application Architecture**: Learn to design scalable AI applications
+2. **Error Handling**: Master AI-specific error handling strategies
+3. **API Integration**: Implement efficient API integration patterns
+4. **Building a Chatbot**: Create a practical AI-powered chatbot
 
-### 3. API Integration
+Each section builds upon the previous one, helping you create production-ready AI applications.
+
+## Prerequisites
+
+Before starting this module, you should have:
+
+- Completed the AI Foundations module
+- Completed the Prompt Engineering module
+- Strong JavaScript/TypeScript experience
+- Understanding of web development concepts
+
+## Getting Started
+
+Select a section from the sidebar to begin your journey into building AI-powered tools. We recommend following the sections in order, as each builds upon the concepts introduced in the previous ones.
 
 - OpenAI API deep dive
 - Anthropic Claude integration

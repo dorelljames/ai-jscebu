@@ -1,0 +1,83 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const allEntries = await getCollection("curriculum");
+
+// Separate main modules and subpages
+const mainModules = allEntries.filter((entry) => !entry.data.parentModule);
+const subpages = allEntries.filter((entry) => entry.data.parentModule);
+
+// Sort main modules by order
+const sortedMainModules = mainModules.sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+// Group subpages by parent module
+const subpagesByModule = new Map<string, CollectionEntry<"curriculum">[]>();
+subpages.forEach((subpage) => {
+  const parentModule = subpage.data.parentModule;
+  if (parentModule) {
+    if (!subpagesByModule.has(parentModule)) {
+      subpagesByModule.set(parentModule, []);
+    }
+    subpagesByModule.get(parentModule)?.push(subpage);
+  }
+});
+
+// Sort subpages within each module
+subpagesByModule.forEach((pages) => {
+  pages.sort((a, b) => a.data.order - b.data.order);
+});
+---
+
+<nav
+  class="w-64 bg-white dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700 min-h-screen"
+>
+  <div class="space-y-4">
+    {
+      sortedMainModules.map((module) => {
+        const moduleSubpages = subpagesByModule.get(module.data.title) || [];
+        return (
+          <div class="space-y-2">
+            <a
+              href={`/curriculum/${module.slug}`}
+              class:list={[
+                "block font-medium hover:text-yellow-600 dark:hover:text-yellow-400",
+                currentPath === `/curriculum/${module.slug}`
+                  ? "text-yellow-600 dark:text-yellow-400"
+                  : "text-gray-800 dark:text-gray-200",
+              ]}
+            >
+              {module.data.title}
+            </a>
+
+            {moduleSubpages.length > 0 && (
+              <div class="pl-4 space-y-2">
+                {moduleSubpages.map((subpage) => (
+                  <a
+                    href={`/curriculum/${subpage.slug}`}
+                    class:list={[
+                      "block text-sm hover:text-yellow-600 dark:hover:text-yellow-400",
+                      currentPath === `/curriculum/${subpage.slug}`
+                        ? "text-yellow-600 dark:text-yellow-400"
+                        : "text-gray-700 dark:text-gray-300",
+                    ]}
+                  >
+                    {subpage.data.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })
+    }
+  </div>
+</nav>
+

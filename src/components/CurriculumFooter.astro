@@ -1,0 +1,111 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
+>
+  <div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          About
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          AI for Devs Workshop is by JavaScript Cebu a community-driven
+          initiative to help developers learn and master AI development with
+          JavaScript.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          Quick Links
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="/curriculum"
+              class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400"
+            >
+              Curriculum
+            </a>
+          </li>
+          <li>
+            <a
+              href="/resources"
+              class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400"
+            >
+              Resources
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/JavaScriptCebu"
+              target="_blank"
+              class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400"
+            >
+              Facebook Page
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          Community
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="https://github.com/ai-js-cebu"
+              class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400"
+            >
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://discord.gg/ai-js-cebu"
+              class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400"
+            >
+              Discord
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/ai_js_cebu"
+              class="text-gray-600 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400"
+            >
+              Twitter
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+          Newsletter
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          Subscribe to our newsletter for updates and new content.
+        </p>
+        <form class="flex">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="flex-1 px-4 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <button
+            type="submit"
+            class="px-4 py-2 bg-yellow-500 text-white rounded-r-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+      <p class="text-center text-gray-600 dark:text-gray-400">
+        © {currentYear} AI for Devs Workshop. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

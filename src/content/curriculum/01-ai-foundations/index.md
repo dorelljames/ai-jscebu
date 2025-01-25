@@ -1,19 +1,13 @@
 ---
 title: "AI Foundations"
-description: "Build foundational knowledge about AI concepts and integrate them into your workflow"
+description: "Learn the fundamentals of AI and how to leverage it in your applications"
 order: 1
 publishedAt: 2024-03-19
 author:
   name: "JS Cebu Team"
   avatar: "/avatars/team.png"
 image: "/course/ai-foundations.png"
-topics:
-  [
-    "AI & LLM basics",
-    "JavaScript for AI",
-    "Practical use cases",
-    "Hands-on API practice",
-  ]
+topics: ["AI Basics", "JavaScript", "APIs", "Use Cases"]
 duration: "4 hours"
 level: "beginner"
 prerequisites:
@@ -22,47 +16,34 @@ prerequisites:
 
 # AI Foundations
 
-Welcome to the AI Foundations module! This course will help you build a strong foundation in AI concepts and learn how to integrate them into your development workflow.
+Welcome to the AI Foundations module! This comprehensive module will introduce you to the fundamentals of AI and how to leverage it in your JavaScript applications.
 
-## Module Overview
+## What You'll Learn
 
-In this module, you'll learn:
+In this module, you'll learn about:
 
-### 1. AI & LLM Basics
+- Understanding AI and Large Language Models (LLMs)
+- JavaScript fundamentals for AI development
+- Practical use cases and applications
+- Hands-on experience with AI APIs
 
-- Understanding Large Language Models (LLMs)
-- How AI models work
-- Types of AI models and their applications
-- Key AI terminology and concepts
+## Module Structure
 
-### 2. JavaScript for AI
+1. **AI & LLM Basics**: Understand the core concepts of AI and Large Language Models
+2. **JavaScript for AI**: Learn the JavaScript fundamentals needed for AI development
+3. **Practical Use Cases**: Explore real-world applications of AI in web development
+4. **Hands-on API Practice**: Get practical experience working with AI APIs
 
-- Setting up AI development environment
-- JavaScript libraries for AI
-- Working with AI APIs
-- Async programming with AI
+Each section builds upon the previous one, providing you with a solid foundation in AI development with JavaScript.
 
-### 3. Practical Use Cases
+## Prerequisites
 
-- Text generation and completion
-- Content analysis and summarization
-- Code generation and assistance
-- Natural language processing tasks
+Before starting this module, you should have:
 
-### 4. Hands-on API Practice
-
-- Working with OpenAI API
-- Implementing AI features in JavaScript
-- Error handling and best practices
-- Rate limiting and optimization
+- Basic JavaScript knowledge
+- Familiarity with web development concepts
+- A modern web browser and code editor
 
 ## Getting Started
 
-Before beginning this module, ensure you have:
-
-- Node.js installed on your system
-- A code editor (VS Code recommended)
-- Basic understanding of JavaScript and async programming
-- An OpenAI API key (we'll help you get one)
-
-Let's begin our journey into the world of AI development!
+Select a section from the sidebar to begin your journey into AI development. We recommend following the sections in order, as each builds upon the concepts introduced in the previous ones.

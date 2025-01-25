@@ -17,36 +17,38 @@ prerequisites:
 
 # RAG Systems
 
-Master Retrieval-Augmented Generation (RAG) to build AI applications that can access and utilize custom knowledge bases effectively.
+Welcome to the RAG Systems module! This comprehensive module will teach you how to build AI applications with Retrieval-Augmented Generation capabilities.
 
-## Module Overview
+## What You'll Learn
 
-### 1. Vector Databases
+In this module, you'll learn about:
 
-- Understanding vector embeddings
-- Popular vector databases
-  - Pinecone
-  - Weaviate
-  - Milvus
-- Database setup and configuration
-- Data indexing strategies
+- Understanding vector databases and embeddings
+- Implementing similarity search algorithms
+- Managing knowledge bases effectively
+- Building RAG-powered applications
 
-### 2. Similarity Search
+## Module Structure
 
-- Vector similarity metrics
-- Nearest neighbor search
-- Hybrid search techniques
-- Performance optimization
-- Search relevance tuning
+1. **Vector Databases**: Master vector embeddings and database management
+2. **Similarity Search**: Learn efficient search algorithms and optimization
+3. **Embeddings**: Understand text embedding models and processing
+4. **Knowledge Integration**: Build applications with RAG capabilities
 
-### 3. Embeddings
+Each section builds upon the previous one, helping you create powerful RAG-enabled applications.
 
-- Text embedding models
-- Generating embeddings
-- Batch processing
-- Embedding visualization
-- Dimension reduction
-- Cost optimization
+## Prerequisites
+
+Before starting this module, you should have:
+
+- Completed the AI Foundations module
+- Completed the AI-Powered Tools module
+- Strong understanding of database concepts
+- Experience with vector operations
+
+## Getting Started
+
+Select a section from the sidebar to begin your journey into RAG systems. We recommend following the sections in order, as each builds upon the concepts introduced in the previous ones.
 
 ### 4. Knowledge Bases
 

@@ -21,33 +21,39 @@ prerequisites:
 
 # AI Agents
 
-Learn to create autonomous AI agents that can reason, plan, and execute tasks independently using advanced AI capabilities.
+Welcome to the AI Agents module! This comprehensive module will teach you how to build autonomous AI agents with advanced reasoning and execution capabilities.
 
-## Module Overview
+## What You'll Learn
 
-### 1. Agent Architecture
+In this module, you'll learn about:
 
-- Agent design patterns
-- Planning systems
-- Memory management
-- Decision making
-- Task decomposition
-- Execution monitoring
+- Designing robust agent architectures
+- Integrating tools and external systems
+- Implementing LangChain for agent development
+- Building autonomous systems
 
-### 2. Tool Integration
+## Module Structure
 
-- Tool description
-- Tool validation
-- Error recovery
-- Tool chaining
-- Result verification
-- Safety measures
+1. **Agent Architecture**: Master agent design patterns and planning systems
+2. **Tool Integration**: Learn to integrate and manage external tools
+3. **LangChain**: Implement agents using the LangChain framework
+4. **Autonomous Systems**: Build complete autonomous AI systems
 
-### 3. LangChain
+Each section builds upon the previous one, helping you create sophisticated AI agents.
 
-- LangChain basics
-- Chains and agents
-- Memory types
+## Prerequisites
+
+Before starting this module, you should have:
+
+- Completed all previous modules
+- Advanced JavaScript/TypeScript experience
+- Strong system design background
+- Understanding of AI concepts
+
+## Getting Started
+
+Select a section from the sidebar to begin your journey into AI agent development. We recommend following the sections in order, as each builds upon the concepts introduced in the previous ones.
+
 - Tool integration
 - Custom tools
 - Deployment patterns

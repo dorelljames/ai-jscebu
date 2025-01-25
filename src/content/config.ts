@@ -17,15 +17,7 @@ const curriculumCollection = defineCollection({
     duration: z.string().optional(), // e.g. "2 hours"
     level: z.enum(["beginner", "intermediate", "advanced"]).optional(),
     prerequisites: z.array(z.string()).optional(),
-    sections: z
-      .array(
-        z.object({
-          id: z.string(),
-          title: z.string(),
-          content: z.string(),
-        })
-      )
-      .optional(),
+    parentModule: z.string().optional(), // For subpages to reference their parent module
   }),
 });
 
