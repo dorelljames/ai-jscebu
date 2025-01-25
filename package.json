@@ -12,7 +12,9 @@
     "@astrojs/cloudflare": "^12.2.1",
     "@astrojs/tailwind": "^5.1.5",
     "@notionhq/client": "^2.2.15",
+    "@types/marked": "^6.0.0",
     "astro": "^5.1.9",
+    "marked": "^15.0.6",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {

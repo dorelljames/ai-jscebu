@@ -225,37 +225,43 @@ const benefits = [
   </section>
 
   <!-- Curriculum Section -->
-  <section id="curriculum" class="py-20 bg-white">
+  <section id="curriculum" class="py-20 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-16">Workshop Curriculum</h2>
+      <h2
+        class="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
+      >
+        Workshop Curriculum
+      </h2>
       <div class="grid gap-8">
         {
           sessions.map((session) => (
             <a
               href={session.href}
-              class="group bg-gray-50 hover:bg-gray-100 rounded-xl p-6 transition-all"
+              class="group bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl p-6 transition-all"
             >
               <div class="flex flex-col md:flex-row gap-6">
                 <div class="flex-none">
-                  <span class="text-4xl font-bold text-yellow-400">
+                  <span class="text-4xl font-bold text-yellow-600 dark:text-yellow-400">
                     {session.number}
                   </span>
                 </div>
                 <div class="flex-grow">
-                  <h3 class="text-2xl font-semibold mb-2 group-hover:text-yellow-500 transition-colors">
+                  <h3 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
                     {session.title}
                   </h3>
-                  <p class="text-gray-600 mb-4">{session.description}</p>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    {session.description}
+                  </p>
                   <div class="flex flex-wrap gap-2">
                     {session.topics.map((topic) => (
-                      <span class="px-3 py-1 bg-white rounded-full text-sm border border-gray-200">
+                      <span class="px-3 py-1 bg-white dark:bg-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
                         {topic}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div class="flex-none self-center">
-                  <span class="text-2xl text-gray-400 group-hover:text-yellow-500 transition-colors">
+                  <span class="text-2xl text-gray-400 group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
                     →
                   </span>
                 </div>

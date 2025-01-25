@@ -1,137 +1,127 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Navigation from "../../components/Navigation.astro";
-
+import CurriculumLayout from "../../layouts/CurriculumLayout.astro";
 import { getEntry, render, getCollection } from "astro:content";
+import { marked, Token } from "marked";
 
 const { slug } = Astro.params;
-console.log("🚀 ~ slug:", slug);
+const slugParts = (slug as string).split("/");
 
-const entry = await getEntry("curriculum", slug as string);
+// Get the main curriculum entry
+const curriculumEntry = await getEntry("curriculum", slugParts[0]);
 
-if (!entry) {
-  // Handle Error, for example:
-  throw new Error("Could not find blog post 1");
+if (!curriculumEntry) {
+  throw new Error(`Could not find curriculum ${slugParts[0]}`);
 }
-const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+
+// Get the rendered content and metadata
+const { Content, headings } = await render(curriculumEntry);
+
+// If we have a sub-section, get its content
+let content;
+let title;
+let currentHeadings;
+
+if (slugParts.length > 1) {
+  const sectionId = slugParts[1];
+  const section = curriculumEntry.data.sections?.find(
+    (s) => s.id === sectionId
+  );
+
+  if (!section) {
+    throw new Error(`Could not find section ${sectionId}`);
+  }
+
+  // Parse the markdown content of the section
+  const html = marked(section.content);
+  content = html;
+  title = `${section.title} - ${curriculumEntry.data.title}`;
+
+  // Parse headings from the section content
+  const tokens = marked.lexer(section.content);
+  currentHeadings = tokens
+    .filter((token: Token) => token.type === "heading")
+    .map((token: Token & { depth: number; text: string }) => ({
+      depth: token.depth,
+      slug: token.text.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      text: token.text,
+    }));
+} else {
+  content = Content;
+  title = curriculumEntry.data.title;
+  currentHeadings = headings;
+}
 ---
 
-<Layout title={entry.data.title}>
-  <div class="min-h-screen bg-white dark:bg-gray-900">
-    <Navigation />
+<CurriculumLayout
+  title={title}
+  headings={currentHeadings}
+  curriculumTitle={curriculumEntry.data.title}
+>
+  <header class="mb-12">
+    <div
+      class="flex flex-col md:flex-row gap-6 items-start md:items-center mb-6"
+    >
+      <span class="text-5xl font-bold text-yellow-400 flex-none">
+        {String(curriculumEntry.data.order).padStart(2, "0")}
+      </span>
+      <div>
+        <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white">
+          {title}
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          {curriculumEntry.data.description}
+        </p>
+      </div>
+    </div>
 
-    <main class="max-w-4xl mx-auto px-4 py-8">
-      <article class="prose prose-lg dark:prose-invert prose-yellow max-w-none">
-        <header class="mb-12 not-prose">
-          <div
-            class="flex flex-col md:flex-row gap-6 items-start md:items-center mb-6"
-          >
-            <span class="text-5xl font-bold text-yellow-400 flex-none">
-              {String(entry.data.order).padStart(2, "0")}
-            </span>
-            <div>
-              <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white">
-                {entry.data.title}
-              </h1>
-              <p class="text-xl text-gray-600 dark:text-gray-400">
-                {entry.data.description}
-              </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      {
+        curriculumEntry.data.duration && (
+          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+            <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+              Duration
+            </div>
+            <div class="font-medium text-gray-900 dark:text-white">
+              {curriculumEntry.data.duration}
             </div>
           </div>
+        )
+      }
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {
-              entry.data.duration && (
-                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                    Duration
-                  </div>
-                  <div class="font-medium text-gray-900 dark:text-white">
-                    {entry.data.duration}
-                  </div>
-                </div>
-              )
-            }
-
-            {
-              entry.data.level && (
-                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                    Level
-                  </div>
-                  <div class="font-medium capitalize text-gray-900 dark:text-white">
-                    {entry.data.level}
-                  </div>
-                </div>
-              )
-            }
-
-            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-              <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                Instructor
-              </div>
-              <div class="flex items-center gap-2">
-                <img
-                  src={entry.data.author.avatar}
-                  alt={entry.data.author.name}
-                  class="w-6 h-6 rounded-full"
-                />
-                <span class="font-medium text-gray-900 dark:text-white"
-                  >{entry.data.author.name}</span
-                >
-              </div>
+      {
+        curriculumEntry.data.level && (
+          <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+            <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+              Level
+            </div>
+            <div class="font-medium capitalize text-gray-900 dark:text-white">
+              {curriculumEntry.data.level}
             </div>
           </div>
+        )
+      }
 
-          {
-            entry.data.prerequisites && entry.data.prerequisites.length > 0 && (
-              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-8">
-                <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
-                  Prerequisites
-                </h2>
-                <ul class="space-y-2">
-                  {entry.data.prerequisites.map((prereq) => (
-                    <li class="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <svg
-                        class="w-5 h-5 text-yellow-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {prereq}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          }
-
-          {
-            entry.data.topics && entry.data.topics.length > 0 && (
-              <div class="flex flex-wrap gap-2">
-                {entry.data.topics.map((topic) => (
-                  <span class="px-3 py-1 bg-yellow-400/10 text-yellow-600 dark:text-yellow-400 rounded-full text-sm font-medium">
-                    {topic}
-                  </span>
-                ))}
-              </div>
-            )
-          }
-        </header>
-
-        <div
-          class="prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-400 prose-a:text-yellow-600 dark:prose-a:text-yellow-400 hover:prose-a:text-yellow-500 dark:hover:prose-a:text-yellow-300 prose-strong:text-gray-900 dark:prose-strong:text-white prose-ul:text-gray-600 dark:prose-ul:text-gray-400 prose-ol:text-gray-600 dark:prose-ol:text-gray-400 prose-li:marker:text-yellow-500 dark:prose-li:marker:text-yellow-400"
-        >
-          <Content />
+      <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+        <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+          Instructor
         </div>
-      </article>
-    </main>
+        <div class="flex items-center gap-2">
+          <img
+            src={curriculumEntry.data.author.avatar}
+            alt={curriculumEntry.data.author.name}
+            class="w-6 h-6 rounded-full"
+          />
+          <span class="font-medium text-gray-900 dark:text-white">
+            {curriculumEntry.data.author.name}
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div
+    class="prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-600 dark:prose-p:text-gray-400 prose-a:text-yellow-600 dark:prose-a:text-yellow-400 hover:prose-a:text-yellow-500 dark:hover:prose-a:text-yellow-300 prose-strong:text-gray-900 dark:prose-strong:text-white prose-ul:text-gray-600 dark:prose-ul:text-gray-400 prose-ol:text-gray-600 dark:prose-ol:text-gray-400 prose-li:marker:text-yellow-500 dark:prose-li:marker:text-yellow-400"
+  >
+    {slugParts.length > 1 ? <div set:html={content} /> : <Content />}
   </div>
-</Layout>
+</CurriculumLayout>

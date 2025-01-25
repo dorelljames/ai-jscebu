@@ -17,6 +17,60 @@ topics:
 duration: "4 hours"
 level: "intermediate"
 prerequisites: ["AI Foundations module", "Basic understanding of LLMs"]
+sections:
+  - id: "prompt-anatomy"
+    title: "Prompt Anatomy"
+    content: |
+      # Understanding Prompt Components
+
+      A well-structured prompt is essential for getting the best results from AI models. Let's break down the key components:
+
+      ## Role and Context Setting
+      - Define who the AI should act as
+      - Provide relevant background information
+      - Set the scope of the interaction
+
+      ## Task Specification
+      - Clear and specific instructions
+      - Expected outcomes
+      - Step-by-step breakdown when needed
+
+      ## Output Formatting
+      - Desired format (JSON, markdown, etc.)
+      - Structure requirements
+      - Examples of expected output
+
+      ## Constraints and Guidelines
+      - Limitations and boundaries
+      - Quality criteria
+      - Error handling preferences
+
+  - id: "chain-of-thought"
+    title: "Chain-of-thought"
+    content: |
+      # Chain-of-thought Prompting
+
+      Chain-of-thought prompting is a powerful technique that helps AI models break down complex problems into manageable steps.
+
+      ## Breaking Down Complex Tasks
+      - Identify the main components
+      - Create logical sequences
+      - Build dependencies between steps
+
+      ## Step-by-step Reasoning
+      - Explicit thinking process
+      - Intermediate calculations
+      - Decision points and branches
+
+      ## Intermediate Steps in Prompts
+      - Show working process
+      - Validate assumptions
+      - Track progress
+
+      ## Verification and Validation
+      - Check intermediate results
+      - Confirm logical flow
+      - Ensure accuracy of final output
 ---
 
 # Prompt Engineering
@@ -25,36 +79,37 @@ Learn how to craft effective prompts that get the best results from AI models. T
 
 ## Module Overview
 
-### 1. Prompt Anatomy
+Each section of this module will dive deep into specific aspects of prompt engineering. Click on a section to learn more:
 
-- Understanding prompt components
-- Role and context setting
-- Task specification
-- Output formatting
-- Constraints and guidelines
+1. [Prompt Anatomy](./prompt-anatomy)
 
-### 2. Chain-of-thought
+   - Understanding prompt components
+   - Role and context setting
+   - Task specification
+   - Output formatting
+   - Constraints and guidelines
 
-- Breaking down complex tasks
-- Step-by-step reasoning
-- Intermediate steps in prompts
-- Verification and validation
+2. [Chain-of-thought](./chain-of-thought)
 
-### 3. Advanced Techniques
+   - Breaking down complex tasks
+   - Step-by-step reasoning
+   - Intermediate steps in prompts
+   - Verification and validation
 
-- Few-shot prompting
-- Zero-shot learning
-- System and user roles
-- Temperature and sampling
-- Context window optimization
+3. [Advanced Techniques](./advanced-techniques)
 
-### 4. Real-world Examples
+   - Few-shot prompting
+   - Zero-shot learning
+   - System and user roles
+   - Temperature and sampling
+   - Context window optimization
 
-- Code generation prompts
-- Content creation workflows
-- Data analysis prompts
-- Debugging assistance
-- Documentation generation
+4. [Real-world Examples](./real-world-examples)
+   - Code generation prompts
+   - Content creation workflows
+   - Data analysis prompts
+   - Debugging assistance
+   - Documentation generation
 
 ## Hands-on Practice
 
