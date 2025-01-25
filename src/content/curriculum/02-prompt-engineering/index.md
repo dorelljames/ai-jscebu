@@ -17,7 +17,11 @@ topics:
 duration: "4 hours"
 level: "intermediate"
 prerequisites: ["AI Foundations module", "Basic understanding of LLMs"]
+---
+
 # Prompt Engineering
+
+Learn how to craft effective prompts that get the best results from AI models. This module covers fundamental concepts to advanced techniques in prompt engineering.
 
 Welcome to the Prompt Engineering module! This comprehensive module will teach you how to craft effective prompts for various AI scenarios.
 
@@ -50,34 +54,34 @@ Before starting this module, you should have:
 ## Getting Started
 
 Select a section from the sidebar to begin your journey into prompt engineering. We recommend following the sections in order, as each builds upon the concepts introduced in the previous ones.
-      # Chain-of-thought Prompting
 
-      Chain-of-thought prompting is a powerful technique that helps AI models break down complex problems into manageable steps.
+# Chain-of-thought Prompting
 
-      ## Breaking Down Complex Tasks
-      - Identify the main components
-      - Create logical sequences
-      - Build dependencies between steps
+Chain-of-thought prompting is a powerful technique that helps AI models break down complex problems into manageable steps.
 
-      ## Step-by-step Reasoning
-      - Explicit thinking process
-      - Intermediate calculations
-      - Decision points and branches
+## Breaking Down Complex Tasks
 
-      ## Intermediate Steps in Prompts
-      - Show working process
-      - Validate assumptions
-      - Track progress
+- Identify the main components
+- Create logical sequences
+- Build dependencies between steps
 
-      ## Verification and Validation
-      - Check intermediate results
-      - Confirm logical flow
-      - Ensure accuracy of final output
----
+## Step-by-step Reasoning
 
-# Prompt Engineering
+- Explicit thinking process
+- Intermediate calculations
+- Decision points and branches
 
-Learn how to craft effective prompts that get the best results from AI models. This module covers fundamental concepts to advanced techniques in prompt engineering.
+## Intermediate Steps in Prompts
+
+- Show working process
+- Validate assumptions
+- Track progress
+
+## Verification and Validation
+
+- Check intermediate results
+- Confirm logical flow
+- Ensure accuracy of final output
 
 ## Module Overview
 
