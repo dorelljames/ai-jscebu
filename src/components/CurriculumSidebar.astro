@@ -36,37 +36,48 @@ subpagesByModule.forEach((pages) => {
 });
 ---
 
-<nav
-  class="w-64 bg-white dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700 min-h-screen"
->
-  <div class="space-y-4">
+<nav class="w-64 bg-gray-50 dark:bg-gray-800 rounded-xl p-6 m-4 mr-0">
+  <div class="space-y-6">
     {
       sortedMainModules.map((module) => {
         const moduleSubpages = subpagesByModule.get(module.data.title) || [];
+        const isCurrentModule =
+          currentPath === `/curriculum/${module.slug}` ||
+          moduleSubpages.some(
+            (subpage) => currentPath === `/curriculum/${subpage.slug}`
+          );
+
         return (
-          <div class="space-y-2">
-            <a
-              href={`/curriculum/${module.slug}`}
-              class:list={[
-                "block font-medium hover:text-yellow-600 dark:hover:text-yellow-400",
-                currentPath === `/curriculum/${module.slug}`
-                  ? "text-yellow-600 dark:text-yellow-400"
-                  : "text-gray-800 dark:text-gray-200",
-              ]}
-            >
-              {module.data.title}
-            </a>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="text-xl font-bold text-yellow-400">
+                {String(module.data.order).padStart(2, "0")}
+              </span>
+              <a
+                href={`/curriculum/${module.slug}`}
+                class:list={[
+                  "block font-medium transition-colors",
+                  "hover:text-yellow-600 dark:hover:text-yellow-400",
+                  isCurrentModule
+                    ? "text-yellow-600 dark:text-yellow-400"
+                    : "text-gray-800 dark:text-gray-200",
+                ]}
+              >
+                {module.data.title}
+              </a>
+            </div>
 
             {moduleSubpages.length > 0 && (
-              <div class="pl-4 space-y-2">
+              <div class="pl-8 space-y-2 border-l-2 border-gray-200 dark:border-gray-700">
                 {moduleSubpages.map((subpage) => (
                   <a
                     href={`/curriculum/${subpage.slug}`}
                     class:list={[
-                      "block text-sm hover:text-yellow-600 dark:hover:text-yellow-400",
+                      "block text-sm transition-colors",
+                      "hover:text-yellow-600 dark:hover:text-yellow-400",
                       currentPath === `/curriculum/${subpage.slug}`
                         ? "text-yellow-600 dark:text-yellow-400"
-                        : "text-gray-700 dark:text-gray-300",
+                        : "text-gray-600 dark:text-gray-400",
                     ]}
                   >
                     {subpage.data.title}
@@ -80,4 +91,3 @@ subpagesByModule.forEach((pages) => {
     }
   </div>
 </nav>
-
